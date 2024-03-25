@@ -2,10 +2,10 @@
 title: Step.4 主题特殊功能
 date: 2020/08/13 21:45:48
 categories:
-  - [计算机科学, 二进制杂谈, Theme Shoka Documentation]
+- [计算机科学, 二进制杂谈, Theme Shoka Documentation]
 tags:
-  - Hexo
-  - 教程
+- Hexo
+- 教程
 math: true
 mermaid: true
 quiz: true
@@ -23,7 +23,6 @@ valine:
 :::
 
 # `links` 链接块
-
 本功能参考NexT，基于Hexo Tag功能，用来建立友链或其他网址链接功能。
 
 文章中的使用格式：
@@ -38,7 +37,7 @@ valine:
 `image`|站点图片|可选，默认为`images/404.png`
 `color`|方块颜色|可选，默认为`#666`
 
-```raw
+```raw 
 &#123;% links %&#125;
 - site: #站点名称
   owner: #管理员名字
@@ -73,7 +72,6 @@ valine:
 ```
 
 {% links %}
-
 - site: 優萌初華
   owner: 霜月琉璃
   url: https://shoka.lostyu.me
@@ -90,10 +88,11 @@ valine:
   url: https://shoka.lostyu.me
   desc: 琉璃的医学 & 编程笔记
   color: "#9d5b8b"
-  {% endlinks %}
+{% endlinks %}
+
 
 2. 以上标签块里的内容，还可以保存到一个`yml`文件中，然后使用`linksfile`标签。
-   其中，`path`位于`<root>/source`目录下。
+其中，`path`位于`<root>/source`目录下。
 
 ```raw
 &#123;% linksfile [path] %&#125;
@@ -111,20 +110,20 @@ valine:
 
 基本格式：`[language] [title] [url] [link text] [mark] [command]`
 
-| 选项      | 描述                                                         | 默认值 |
-| --------- | ------------------------------------------------------------ | ------ | ------------------------------ | ------ |
-| language  | - 支持的语言[戳此](https://prismjs.com/#supported-languages) | null \ |
-|           | - 如果不需要代码高亮，但希望显示代码块样式，则设为`raw`      | \      |
-|           | - 留空或设为`info`，将不显示代码高亮和代码块样式             |        |
-| title     | 代码块的标题文字                                             | null   |
-| url       | 代码块标题右侧显示的链接                                     | null   |
-| link text | 上述链接显示的标题                                           | link   |
-| mark      | 行高亮显示，格式为`mark:行号,行号开始-行号结束,其他行号`。   | null \ |
-|           | 例如`mark:1,4-7,10`，将高亮显示第1、4、5、6、7、10行         |        |
-| command   | 命令行提示符，格式为`command:("提示内容":行号,行号           |        | "提示内容":行号开始-行号结束)` | null \ |
-|           | 例如`command:("[root@localhost] $":1,9-10                    |        | "[admin@remotehost] #":4-6)`   |        |
+选项|描述|默认值
+--|--|--
+language| - 支持的语言[戳此](https://prismjs.com/#supported-languages)|null \
+| | - 如果不需要代码高亮，但希望显示代码块样式，则设为`raw` | \
+| | - 留空或设为`info`，将不显示代码高亮和代码块样式 | |
+title|代码块的标题文字|null
+url|代码块标题右侧显示的链接|null
+link text|上述链接显示的标题|link
+mark|行高亮显示，格式为`mark:行号,行号开始-行号结束,其他行号`。| null \
+| |例如`mark:1,4-7,10`，将高亮显示第1、4、5、6、7、10行| |
+command|命令行提示符，格式为`command:("提示内容":行号,行号||"提示内容":行号开始-行号结束)`| null \
+| |例如`command:("[root@localhost] $":1,9-10||"[admin@remotehost] #":4-6)` | |
 
-````raw
+~~~raw
 ```java 行高亮 https://shoka.lostyu.me 参考链接 mark:1,6-7
 import java.util.Scanner;
 ...
@@ -148,7 +147,7 @@ git add -A
 git commit -m "update"
 git push
 ```
-````
+~~~
 
 ```java 行高亮 https://shoka.lostyu.me 参考链接 mark:1,6-7
 import java.util.Scanner;
@@ -175,11 +174,10 @@ git push
 ```
 
 # `quiz` 练习题与答案
-
 这个功能是用来显示练习题的。
 需要在Front Matter中添加`quiz: true`，以正确显示题型标签。
 
-````raw 几个例子
+~~~raw 几个例子
 ---
 title: 练习题与答案
 quiz: true
@@ -214,44 +212,58 @@ quiz: true
 10. 如果定义`int e=8; double f=6.4, g=8.9;`，则表达式 `f+int(e/3*int(f+g)/2)%4` 的值为 [9.4]{.gap}。 {.quiz .fill}
     > 注意运算顺序和数据类型
     > [8.4]{.mistake}
-````
+~~~
 
 点击选项可以显示答案，以及答案解析。
 
-1. 下列叙述正确的是 []{.gap} 。 {.quiz} - 虚函数只能定义成无参函数 - 虚函数不能有返回值 - 能定义虚构造函数 - A、B、C都不对 {.correct}
-   {.options}
+1. 下列叙述正确的是 []{.gap} 。 {.quiz}
+    - 虚函数只能定义成无参函数
+    - 虚函数不能有返回值
+    - 能定义虚构造函数
+    - A、B、C都不对 {.correct}
+{.options}
 
-2. 有基类`SHAPE`，派生类`CIRCLE`，声明如下变量： {.quiz .multi}
-   `cpp
+2. 有基类`SHAPE`，派生类`CIRCLE`，声明如下变量：  {.quiz .multi}
+    ```cpp
     SHAPE shape1,*p1;
     CIRCLE circle1,*q1;
-    `
-   下列哪些项是“派生类对象替换基类对象”。- `p1=&circle1;` {.correct} - `q1=&shape1;` - `shape1=circle1;` {.correct} - `circle1=shape1;`
-   {.options} > - :heavy_check_mark: 令基类对象的指针指向派生类对象 > - :x: 派生类指针指向基类的引用 > - :heavy_check_mark: 派生类对象给基类对象赋值 > - :x: 基类对象给派生类对象赋值 > {.options}
+    ```
+    下列哪些项是“派生类对象替换基类对象”。
+    - `p1=&circle1;` {.correct}
+    - `q1=&shape1;`
+    - `shape1=circle1;` {.correct}
+    - `circle1=shape1;`
+{.options}
+    > - :heavy_check_mark: 令基类对象的指针指向派生类对象
+    > - :x: 派生类指针指向基类的引用
+    > - :heavy_check_mark: 派生类对象给基类对象赋值
+    > - :x: 基类对象给派生类对象赋值
+    > {.options}
 
 3. 编译时多态主要指运算符重载与函数重载，而运行时多态主要指虚函数。 {.quiz .true}
 
 4. 如果定义`int e=8; double f=6.4, g=8.9;`，则表达式 `f+int(e/3*int(f+g)/2)%4` 的值为 [9.4]{.gap}。 {.quiz .fill}
-   > 注意运算顺序和数据类型
-   > [8.4]{.mistake}
+    > 注意运算顺序和数据类型
+    > [8.4]{.mistake}
+
 
 ## 使用说明
-
 本功能基于`markdown-it-bracketed-spans`和`markdown-it-attrs`
 
-| 标签               | 含义             |
-| ------------------ | ---------------- |
-| `{.quiz}`          | 选择题           |
-| `{.quiz .multi}`   | 多选题           |
-| `{.quiz .true}`    | 正确的判断题     |
-| `{.quiz .false}`   | 错误的判断题     |
-| `{.quiz .fill}`    | 填空题           |
-| `[]{.gap}`         | 空白下划线       |
-| `[答案内容]{.gap}` | 答案内容带下划线 |
-| `{.options}`       | ABCDE选项        |
-| `{.correct}`       | 选择题的正确选项 |
-| `>`                | 答案解析         |
-| `[8.4]{.mistake}`  | 错题备注         |
+标签|含义
+--|--
+`{.quiz}` | 选择题
+`{.quiz .multi}` | 多选题
+`{.quiz .true}` | 正确的判断题
+`{.quiz .false}` | 错误的判断题
+`{.quiz .fill}` | 填空题
+`[]{.gap}` | 空白下划线
+`[答案内容]{.gap}` | 答案内容带下划线
+`{.options}` | ABCDE选项
+`{.correct}` | 选择题的正确选项
+`>` | 答案解析
+`[8.4]{.mistake}` | 错题备注
+
 
 # `emoji` 绘文字
 
@@ -466,32 +478,29 @@ H~2~0
 这里是卡片2的内容
 ;;;
 ```
-
 ;;;id1 卡片1
 这里是卡片1的内容
 **加粗**
 [success]{.label .success}
 
 {% links %}
-
 - site: 優萌初華
   owner: 霜月琉璃
   url: https://shoka.lostyu.me
   desc: 琉璃的医学 & 编程笔记
   image: https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg
   color: "#e9546b"
-  {% endlinks %}
-  ;;;
+{% endlinks %}
+;;;
 
 ;;;id1 卡片2
 这里是卡片2的内容
 :::danger
 危险危险
 :::
-
 - 第一行
 - 第二行
-  ;;;
+;;;
 
 ;;;id2 ②号标签卡片1
 这里是卡片1的内容
@@ -558,6 +567,7 @@ H~2~0
 ++下划线++
 +++
 
+
 +++primary 紫色
 :::info
 参考信息
@@ -565,9 +575,10 @@ H~2~0
 
 - 第一行
 - 第二行
-  +++
++++
 
-+++info 蓝色
+
++++info  蓝色
 ;;;id3 卡片1
 这里是卡片1的内容
 ++波浪线++{.wavy}
@@ -580,12 +591,11 @@ H~2~0
 
 +++success 绿色
 {% links %}
-
 - site: 優萌初華
   url: https://shoka.lostyu.me
   color: "#e9546b"
-  {% endlinks %}
-  +++
+{% endlinks %}
++++
 
 +++warning 黄色
 !!警告警告警告警告警告!!{.bulr}
@@ -644,10 +654,10 @@ H~2~0
 `{食べる^たべる}` | {食べる^たべる}
 `{食べる^=たべる}` | {食べる^=たべる}
 `{あいうえお^*}` | {あいうえお^*}
-`{あいうえお^*❤}`| {あいうえお^*❤}`{常用账号^contact}`|{常用账号^contact}
+`{あいうえお^*❤}` | {あいうえお^*❤}
+`{常用账号^contact}`|{常用账号^contact}
 
 # `media`多媒体
-
 本功能基于Hexo Tag功能，使用`media`标签，目前可选择两种类型，即`audio`和`video`。
 
 ```raw
@@ -663,6 +673,7 @@ H~2~0
 标签包绕一段`yml`格式的内容，格式与[背景音乐](../config/#背景音乐)的配置类似。
 
 亦可以直接使用网易云、虾米、QQ音乐的播放列表、单曲。
+
 
 ```raw 举个栗子
 &#123;% media audio %&#125;
@@ -685,22 +696,23 @@ H~2~0
 ```
 
 {% media audio %}
-
 - title: 列表1
   list:
-  - https://music.163.com/#/playlist?id=2943811283
-  - https://music.163.com/#/playlist?id=2297706586
+    - https://music.163.com/#/playlist?id=2943811283
+    - https://music.163.com/#/playlist?id=2297706586
 - title: 列表2
-  list: - https://music.163.com/#/playlist?id=2031842656
-  {% endmedia %}
+  list:
+    - https://music.163.com/#/playlist?id=2031842656
+{% endmedia %}
+
 
 {% media video %}
-
 - name: "测试1"
   url: https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0
 - name: "测试2"
   url: https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0
-  {% endmedia %}
+{% endmedia %}
+
 
 # `math`数学公式
 
@@ -731,9 +743,7 @@ $$\begin{array}{c}
 行内公式：$\sqrt{3x-1}+(1+x)^2$
 
 独立块显示：
-
-$$
-\begin{array}{c}
+$$\begin{array}{c}
 
 \nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
 = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
@@ -742,15 +752,15 @@ $$
 
 \nabla \cdot \vec{\mathbf{B}} & = 0
 
-\end{array}
-$$
+\end{array}$$
+
 
 # `mermaid`流程图
 
 本功能基于`markdown-it-mermaid`
 在Front Matter中添加`mermaid: true`以支持[Mermaid](https://mermaid-js.github.io/mermaid/#/)
 
-````raw
+~~~raw
 ---
 title: 流程图显示
 mermaid: true
@@ -779,7 +789,7 @@ sequenceDiagram
         end
     end
 ```
-````
+~~~
 
 ```mermaid
 graph LR

@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-const nunjucks = require("nunjucks");
-const path = require("path");
+const nunjucks = require('nunjucks');
+const path = require('path');
 
-const pangu = require("pangu") || {
-  spacing: (data) => {
-    return data;
-  },
-};
+const pangu = require('pangu') || {
+    spacing: data => {
+      return data;
+    }
+  };
 
 function njkCompile(data) {
   const templateDir = path.dirname(data.path);
@@ -15,16 +15,16 @@ function njkCompile(data) {
     autoescape: false,
     throwOnUndefined: false,
     trimBlocks: false,
-    lstripBlocks: false,
+    lstripBlocks: false
   });
-  env.addFilter("safedump", (dictionary) => {
-    if (typeof dictionary !== "undefined" && dictionary !== null) {
+  env.addFilter('safedump', dictionary => {
+    if (typeof dictionary !== 'undefined' && dictionary !== null) {
       return JSON.stringify(dictionary);
     }
     return '""';
   });
-  env.addFilter("pangu", (dictionary) => {
-    if (typeof dictionary !== "undefined" && dictionary !== null) {
+  env.addFilter('pangu', dictionary => {
+    if (typeof dictionary !== 'undefined' && dictionary !== null) {
       return pangu.spacing(dictionary);
     }
     return '""';
@@ -37,12 +37,12 @@ function njkRenderer(data, locals) {
 }
 
 // Return a compiled renderer.
-njkRenderer.compile = function (data) {
+njkRenderer.compile = function(data) {
   const compiledTemplate = njkCompile(data);
   // Need a closure to keep the compiled template.
-  return function (locals) {
+  return function(locals) {
     return compiledTemplate.render(locals);
   };
 };
 
-hexo.extend.renderer.register("njk", "html", njkRenderer);
+hexo.extend.renderer.register('njk', 'html', njkRenderer);
