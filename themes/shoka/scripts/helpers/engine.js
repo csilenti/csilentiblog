@@ -25,7 +25,8 @@ const randomBG = function(count = 1, image_server = null, image_list = []) {
   }
 
   var parseImage = function(img, size) {
-    if (img.startsWith('//') || img.startsWith('http')) {
+    // 增加图片路径检测(检测到/images则直接返回图片)
+    if (img.startsWith('//') || img.startsWith('http') || img.startsWith('/images')) {
       return img
     } else {
       return 'https://tva'+randomServer+'.sinaimg.cn/'+size+'/'+img
